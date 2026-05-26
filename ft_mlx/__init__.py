@@ -10,6 +10,6 @@
 #                                                                             #
 # ########################################################################### #
 
-from .ft_mlx import PyMlx
+from .main import PyMlx, c_void_p
 
-__all__ = ["PyMlx"]
+__all__ = ["PyMlx", "c_void_p"]

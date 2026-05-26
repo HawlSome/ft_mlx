@@ -10,7 +10,7 @@
 #                                                                             #
 # ########################################################################### #
 
-from mlx import Mlx, c_void_p, c_int
+from mlx import Mlx, c_void_p
 from typing import Any
 
 
@@ -22,18 +22,18 @@ class PyMlx:
     def get_ptr(self) -> c_void_p:
         return self._ptr
 
-    def new_window(self, width: int, height: int, title: str) -> Any:
+    def new_window(self, width: int, height: int, title: str) -> c_void_p:
         return self._mlx.mlx_new_window(
             self._ptr, width, height, title
         )
 
-    def clear_window(self, win: c_void_p) -> c_int:
+    def clear_window(self, win: c_void_p) -> int:
         return self._mlx.mlx_clear_window(
             self._ptr,
             win
         )
 
-    def destroy_window(self, win: c_void_p) -> c_int:
+    def destroy_window(self, win: c_void_p) -> int:
         return self._mlx.mlx_destroy_window(
             self._ptr, win
         )
@@ -44,15 +44,15 @@ class PyMlx:
         )
 
     def put_str(
-        self, win: Any, x: int, y: int, color: int, string: str
-    ) -> c_int:
+        self, win: c_void_p, x: int, y: int, color: int, string: str
+    ) -> int:
         return self._mlx.mlx_string_put(
             self._ptr, win, x, y, color, string
         )
 
     def put_pixel(
             self, win: c_void_p, x: int, y: int, color: int
-    ) -> c_int:
+    ) -> int:
         return self._mlx.mlx_pixel_put(
             self._ptr, win, x, y, color
         )
@@ -63,7 +63,7 @@ class PyMlx:
             self._ptr, width, height
         )
 
-    def release(self) -> c_int:
+    def release(self) -> int:
         return self._mlx.mlx_release(
             self._ptr
         )
