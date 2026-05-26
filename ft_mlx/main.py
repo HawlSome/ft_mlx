@@ -7,11 +7,11 @@
 #   By: varandri <varandri@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/05/26 16:38:17 by varandri            #+#    #+#            #
-#   Updated: 2026/05/27 00:09:24 by varandri           ###   ########.fr      #
+#   Updated: 2026/05/27 00:17:03 by varandri           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
-from .mlx import Mlx, c_void_p
+from mlx import Mlx, c_void_p
 from typing import Any, Callable
 
 
