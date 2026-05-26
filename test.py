@@ -2,16 +2,22 @@
 # ########################################################################### #
 #   shebang: 1                                                                #
 #                                                          :::      ::::::::  #
-#   __init__.py                                          :+:      :+:    :+:  #
+#   test.py                                              :+:      :+:    :+:  #
 #                                                      +:+ +:+         +:+    #
 #   By: varandri <varandri@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
-#   Created: 2026/05/26 16:41:17 by varandri            #+#    #+#            #
-#   Updated: 2026/05/27 00:04:54 by varandri           ###   ########.fr      #
+#   Created: 2026/05/26 23:38:06 by varandri            #+#    #+#            #
+#   Updated: 2026/05/26 23:42:52 by varandri           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
-from . import mlx
-from .main import Mlx, PyMlx, c_void_p
+from ft_mlx import PyMlx
+from time import sleep
 
-__all__ = ["Mlx", "PyMlx", "c_void_p", "mlx"]
+
+if __name__ == "__main__":
+    mlx = PyMlx()
+    win = mlx.new_window(800, 800, "Joda")
+    sleep(5)
+    mlx.destroy_window(win)
+    mlx.release()

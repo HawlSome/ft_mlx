@@ -1,7 +1,7 @@
 # Mlx large test
 
 import sys
-from mlx import Mlx  # Import Mlx class
+from ft_mlx.mlx import Mlx  # Import Mlx class
 
 class ImgData:
     """Structure for image data"""

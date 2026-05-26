@@ -1,5 +1,5 @@
 
-from mlx import Mlx
+from ft_mlx.mlx import Mlx
 
 def mymouse(button, x, y, mystuff):
     print(f"Got mouse event! button {button} at {x},{y}.")
