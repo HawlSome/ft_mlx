@@ -7,14 +7,12 @@
 #   By: varandri <varandri@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/05/26 16:38:17 by varandri            #+#    #+#            #
-#   Updated: 2026/05/27 12:11:32 by varandri           ###   ########.fr      #
+#   Updated: 2026/05/27 12:12:32 by varandri           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from .mlx import Mlx, c_void_p
 from typing import Any, Callable
-from threading import Thread
-
 
 class PyMlx:
     def __init__(self) -> None:
