@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 # ########################################################################### #
-#   shebang: 1                                                                #
+#                                                                             #
 #                                                          :::      ::::::::  #
 #   main.py                                              :+:      :+:    :+:  #
 #                                                      +:+ +:+         +:+    #
 #   By: varandri <varandri@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/05/26 16:38:17 by varandri            #+#    #+#            #
-#   Updated: 2026/05/27 00:09:24 by varandri           ###   ########.fr      #
+#   Updated: 2026/05/27 11:56:00 by varandri           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
 from .mlx import Mlx, c_void_p
 from typing import Any, Callable
+from threading import Thread
 
 
 class PyMlx:
@@ -81,28 +82,50 @@ class PyMlx:
         return self._mlx.mlx_xpm_file_to_image(self._ptr, path)
 
     def key_hook(
-        self, win: c_void_p, callback: Callable[..., Any], params: Any
+        self, win: c_void_p, callback: Callable[..., Any], params: list[Any]
     ) -> Any:
-        return self._mlx.mlx_key_hook(win, callback, params)
+        return self._mlx.mlx_key_hook(win, callback, *params)
 
     def mouse_hook(
-        self, win: c_void_p, callback: Callable[..., Any], params: Any
+        self, win: c_void_p, callback: Callable[..., Any], params: list[Any]
     ) -> Any:
-        return self._mlx.mlx_mouse_hook(win, callback, params)
+        return self._mlx.mlx_mouse_hook(win, callback, *params)
 
     def expose_hook(
-        self, win: c_void_p, callback: Callable[..., Any], params: Any
+        self, win: c_void_p, callback: Callable[..., Any], params: list[Any]
     ) -> Any:
-        return self._mlx.mlx_expose_hook(win, callback, params)
+        return self._mlx.mlx_expose_hook(win, callback, *params)
 
-    def loop_hook(self, callback: Callable[..., Any], params: Any) -> Any:
-        return self._mlx.mlx_loop_hook(self._ptr, callback, params)
+    def loop_hook(
+            self, callback: Callable[..., Any], params: list[Any]
+    ) -> Any:
+        return self._mlx.mlx_loop_hook(self._ptr, callback, *params)
+
+    def loop(self) -> int:
+        return self._mlx.mlx_loop(self._ptr)
 
     def hook(
         self, win: c_void_p, x_event: int, x_mask: int,
-        callback: Callable[..., Any], params: Any
+        callback: Callable[..., Any], params: list[Any]
     ) -> Any:
-        return self._mlx.mlx_hook(win, x_event, x_mask, callback, params)
+        return self._mlx.mlx_hook(win, x_event, x_mask, callback, *params)
+
+    # def mass_loop_hook(
+    #     self, callbacks: list[Callable[..., Any]],
+    #     params: list[list[Any]]
+    # ) -> Any:
+    #     ret_values: list[Any] = []
+    #     if len(callbacks) != len(params):
+    #         raise ValueError(
+    #             "Missing either one of the following values: "
+    #             " callback, params"
+    #         )
+    #     x: int = len(callbacks)
+    #     for i in range(x):
+    #         ret_values.append(
+    #             self.loop_hook(callbacks[i], params[i])
+    #         )
+    #     return ret_values
 
     def mouse_hide(self) -> int:
         return self._mlx.mlx_mouse_hide(self._ptr)
