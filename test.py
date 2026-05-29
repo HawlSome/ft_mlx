@@ -7,7 +7,7 @@
 #   By: varandri <varandri@student.42antananarivo.   +#+  +:+       +#+       #
 #                                                  +#+#+#+#+#+   +#+          #
 #   Created: 2026/05/26 23:38:06 by varandri            #+#    #+#            #
-#   Updated: 2026/05/29 15:44:05 by varandri           ###   ########.fr      #
+#   Updated: 2026/05/29 15:45:14 by varandri           ###   ########.fr      #
 #                                                                             #
 # ########################################################################### #
 
@@ -75,7 +75,7 @@ def loop_hooks(mlx: PyMlx, win: c_void_p, foreground: c_void_p, background: c_vo
 
         mlx.clear_window(win)
         mlx.put_image_to_window(win, background, 0, 0)
-        # mlx.put_image_to_window(win, foreground, 0, 0)
+        mlx.put_image_to_window(win, foreground, 0, 0)
         mlx.put_str(win, 20, 20, 0x000000, lst[counter.count])
         counter.count += 1
 
